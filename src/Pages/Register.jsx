@@ -1,14 +1,101 @@
-import React, {useState } from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 Import icons
-
+import { toast } from "react-toastify";
 
 const Register = () => {
-  
-  
+  const {user, createUser, setUser, googleLogIn, updateUser } = use(AuthContext);
+  const [passError, setPassError] = useState("");
   const [showPassword, setShowPassword] = useState(false); 
-  
+  const navigate = useNavigate()
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const hasUppercase = /[A-Z]/;
+    const hasLowercase = /[a-z]/;
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    console.log({ name, email, photo, password });
+
+    if (!hasUppercase.test(password)) {
+      setPassError("Password should have an uppercase letter.");
+      return;
+    } else {
+      setPassError("");
+    }
+
+    if (!hasLowercase.test(password)) {
+      setPassError("Password should have a lowercase letter.");
+      return;
+    } else {
+      setPassError("");
+    }
+
+    if (password.length < 6) {
+      setPassError("Password should be more than 6 characters.");
+      return;
+    } else {
+      setPassError("");
+    }
+
+    createUser(email, password)
+      .then(() => {
+        toast.success('User have Register Successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+                // const user =user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+             
+            navigate("/")
+          })
+          .catch(() => {
+             
+            setUser(user);
+            
+          });
+      })
+      .catch((error) => {
+        console.log(error)
+         toast.warn('There is a problem with register User', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+      });
+      
+  };
+
+  const handleGoogle = () => {
+    googleLogIn()
+      .then(() => {
+       
+        navigate("/")
+      })
+      .catch(() => {
+        
+      });
+      
+  };
+
   return (
     <div className="lg:w-11/12 lg:mx-auto mx-s">
       <div className="min-h-screen bg-gray-100 flex items-center justify-center rounded-2xl">
@@ -20,14 +107,14 @@ const Register = () => {
             <div className="absolute left-1/2 -bottom-[1px] transform -translate-x-1/2 w-16 h-[2px] bg-green-500" />
           </div>
 
-          <form className="space-y-4">
+          <form onSubmit={handleRegister} className="space-y-4">
             {/* Name */}
             <input
               type="text"
               name="name"
               placeholder="Enter Your Name"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
+              className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             {/* Email */}
             <input
@@ -35,7 +122,7 @@ const Register = () => {
               name="email"
               placeholder="Enter Your Email"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
+              className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             {/* Photo URL */}
             <input
@@ -43,7 +130,7 @@ const Register = () => {
               name="photo"
               placeholder="Photo Url"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
+              className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
 
             {/* Password with Eye Toggle */}
@@ -53,12 +140,12 @@ const Register = () => {
                 name="password"
                 placeholder="Type Your Password"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 pr-12 text-black"
+                className="text-gray-800 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 pr-12"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-800 "
+                className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-800"
                 tabIndex={-1}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -69,6 +156,7 @@ const Register = () => {
             <div className="space-y-3">
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="btn btn-outline btn-secondary w-full flex items-center justify-center gap-2"
               >
                 <FcGoogle size={24} />
@@ -76,6 +164,8 @@ const Register = () => {
               </button>
             </div>
 
+            {/* Password Error */}
+            {passError && <p className="text-red-500">{passError}</p>}
 
             {/* Submit */}
             <button
@@ -88,7 +178,7 @@ const Register = () => {
 
           <p className="text-center text-sm text-gray-600 mt-6">
             Do you have an account?{" "}
-            <Link to="/login" className="text-green-600 hover:underline">
+            <Link to="/auth/login" className="text-green-600 hover:underline">
               Login
             </Link>
           </p>

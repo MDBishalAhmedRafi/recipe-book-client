@@ -1,7 +1,29 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import mainLogo from "../assets/Capture-removebg-preview.png";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 const Navbar = () => {
+  const { user, logOut } = use(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // const handleDeleteToast = () => {
+        toast.warn("User have Loged Out", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        // }
+      })
+      .catch(() => {});
+  };
   return (
     <div className="lg:w-11/12 lg:mx-auto mx-2">
       <div className="navbar shadow-sm mb-5">
@@ -64,20 +86,28 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-3">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
-          <Link to="/register" className="btn">
-            Register
-          </Link>
           {/* <p>{user && user.email}</p> */}
-          {/* <Link to="/profile-page" className='cursor-pointer'><img className='bg-green-200 rounded-full p-1' src={user && user.photoURL} alt="" /></Link> */}
-          {/* { 
-      user ? <button onClick={handleLogOut} className='btn'>Logout</button> : <Link to="/auth/login" className="btn">Login</Link>
-    }
-    { 
-      user ? "" : <Link to="/auth/register" className="btn">Register</Link>
-    } */}
+            <img
+              className="bg-green-200 rounded-full p-1"
+              src={user && user.photoURL}
+              alt=""
+            />
+          {user ? (
+            <button onClick={handleLogOut} className="btn">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
+          {user ? (
+            ""
+          ) : (
+            <Link to="/register" className="btn">
+              Register
+            </Link>
+          )}
         </div>
       </div>
     </div>

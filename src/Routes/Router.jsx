@@ -10,6 +10,7 @@ import MyRecipies from "../Pages/MyRecipies";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import ErrorPage from "../Pages/ErrorPage";
+import ForgetPass from "../Pages/ForgetPass";
 
  const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ import ErrorPage from "../Pages/ErrorPage";
                                 path: '/register',
                                 element: <Register></Register>,
                 },
+                { 
+                                path : '/forget-password',
+                                element: <ForgetPass></ForgetPass>
+                }
                 
     ]
   },
