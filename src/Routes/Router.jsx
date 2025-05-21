@@ -30,6 +30,7 @@ import RecipeDetails from "../Pages/RecipeDetails";
                 },
                 { 
                                 path: '/all-recipies',
+                                loader: () => fetch('http://localhost:3000/recipies'),
                                 element: <AllRecipies></AllRecipies>,
                 },
                 { 
