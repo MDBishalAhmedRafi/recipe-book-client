@@ -82,7 +82,7 @@ const Navbar = () => {
             <li>
               <NavLink to="/my-recipies">My-Recipies</NavLink>
             </li>
-            {/* {user ? <li><NavLink to="/profile-page">Profile</NavLink></li> : ""} */}
+            {user ? <li><NavLink to="/recipe-details">Recipe-Details</NavLink></li> : ""}
           </ul>
         </div>
         <div className="navbar-end space-x-3">
