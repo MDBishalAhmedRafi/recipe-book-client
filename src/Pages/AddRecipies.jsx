@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const CUISINE_OPTIONS = ["Italian", "Mexican", "Indian", "Chinese", "Others"];
 const CATEGORIES = ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"];
@@ -15,7 +16,11 @@ const AddRecipies = () => {
     prepTime: "",
     categories: [],
     likeCount: 0,
+    email: "", 
   });
+
+  const {user} =use(AuthContext);
+  // const userEmail = user?.email;
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
@@ -32,6 +37,11 @@ const AddRecipies = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userEmail = user?.email
+      const recipeWithEmail = {
+    ...formData,
+    email: userEmail,
+  };
     console.log("Recipe Submitted:", formData);
     setFormData({
       image: "",
@@ -42,13 +52,14 @@ const AddRecipies = () => {
       prepTime: "",
       categories: [],
       likeCount: 0,
+      email: "",
     });
     fetch('http://localhost:3000/recipies', { 
       method: 'POST',
       headers: { 
             'content-type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(recipeWithEmail)
     })
     .then(res => res.json())
     .then(data => { 
