@@ -71,7 +71,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
         setIsModalOpen(false);
         if (data.modifiedCount) {
           Swal.fire({
-            title: "Recipe Successfully Updated!",
+            title: "Recipe Updated Successfully!",
             icon: "success",
             draggable: true,
           });
