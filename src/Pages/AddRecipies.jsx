@@ -75,7 +75,7 @@ const AddRecipies = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-200 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 flex items-center gap-2">
+      <h2 className="text-3xl font-bold mb-6 flex items-center gap-2 justify-center">
         <FaUtensils /> Add a New Recipe
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -199,8 +199,8 @@ const AddRecipies = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="text-right">
-          <button type="submit" className="btn btn-primary">
+        <div className="text-center">
+          <button type="submit" className="btn btn-primary w-full">
             Add Recipe
           </button>
         </div>

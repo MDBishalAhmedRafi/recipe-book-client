@@ -15,7 +15,7 @@ const AllRecipeCard = ({recipies}) => {
                                       </figure>
                                 
                                       <div className="card-body">
-                                        <h2 className="card-title text-lg font-bold text-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                                        <h2 className="card-title text-lg font-bold text-gradient-to-r from-primary to-secondary bg-clip-text">
                                           {title}
                                         </h2>
                                 

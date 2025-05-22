@@ -65,7 +65,8 @@ import RecipeDetails from "../Pages/RecipeDetails";
                                 element: <PrivateRoute>
                                   <RecipeDetails></RecipeDetails>
                                 </PrivateRoute>
-                }
+                },
+
                 
     ]
   },
