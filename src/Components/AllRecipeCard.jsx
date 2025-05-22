@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaEye, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const AllRecipeCard = ({recipies}) => {
-                const {image, title, cuisineType, likeCount} = recipies
+                const {_id, image, title, cuisineType, likeCount} = recipies
                 return (
                                 <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 border border-base-300">
                                       <figure className="overflow-hidden">
@@ -26,9 +27,11 @@ const AllRecipeCard = ({recipies}) => {
                                         </div>
                                 
                                         <div className="card-actions justify-end mt-4">
+                                         <Link to={`/recipe-details/${_id}`}>
                                           <button className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
                                             <FaEye className="text-sm" /> See Details
                                           </button>
+                                         </Link>
                                         </div>
                                       </div>
                                     </div>

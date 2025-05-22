@@ -25,12 +25,13 @@ import RecipeDetails from "../Pages/RecipeDetails";
                                 index: true,
                                 path: '/',
                                 loader: () => fetch('http://localhost:3000/recipies'),
+                                
                                 element: <Home></Home>,
                                 hydrateFallbackElement: <Loading></Loading>
                 },
                 { 
                                 path: '/all-recipies',
-                                loader: () => fetch('http://localhost:3000/recipies'),
+                                loader: () => fetch('http://localhost:3000/more-recipies'),
                                 element: <AllRecipies></AllRecipies>,
                 },
                 { 
@@ -58,7 +59,8 @@ import RecipeDetails from "../Pages/RecipeDetails";
                                 element: <ForgetPass></ForgetPass>
                 },
                 { 
-                                path: '/recipe-details',
+                                path: '/recipe-details/:id',
+                                loader: ({params}) => fetch(`http://localhost:3000/more-recipies/${params.id}`),
                                 element: <PrivateRoute>
                                   <RecipeDetails></RecipeDetails>
                                 </PrivateRoute>

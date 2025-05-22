@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUtensils } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const CUISINE_OPTIONS = ["Italian", "Mexican", "Indian", "Chinese", "Others"];
 const CATEGORIES = ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"];
@@ -51,7 +52,13 @@ const AddRecipies = () => {
     })
     .then(res => res.json())
     .then(data => { 
-      console.log('after adding recipe', data);
+      if(data.insertedId) { 
+        Swal.fire({
+  title: "Recipe Successfully Added!",
+  icon: "success",
+  draggable: true
+});
+      }
     })
   };
 

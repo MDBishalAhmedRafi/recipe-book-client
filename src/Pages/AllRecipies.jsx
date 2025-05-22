@@ -9,7 +9,7 @@ const AllRecipies = () => {
       <h1 className="text-center text-3xl font-bold mb-8">
                 All Recipe
       </h1>
-      <div className="grid lg:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">
+      <div className="grid lg:grid-cols-4 gap-6 md:grid-cols-2 grid-cols-1">
                 { 
                                 AllRecipies.map(recipies => <AllRecipeCard key={recipies._id} recipies={recipies}></AllRecipeCard>)
                 }
