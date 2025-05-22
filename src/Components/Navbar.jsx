@@ -60,7 +60,7 @@ const Navbar = () => {
                 <NavLink to="/add-recipies">Add-Recipies</NavLink>
               </li>
               <li>
-                <NavLink to="/my-recipies">My-Recipies</NavLink>
+                <NavLink to={`/my-recipies/${user?.email}`}>My-Recipies</NavLink>
               </li>
             </ul>
           </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
               <NavLink to="/add-recipies">Add-Recipies</NavLink>
             </li>
             <li>
-              <NavLink to="/my-recipies">My-Recipies</NavLink>
+              <NavLink to={`/my-recipies/${user?.email}`}>My-Recipies</NavLink>
             </li>
             {/* {user ? <li><NavLink to="/recipe-details">Recipe-Details</NavLink></li> : ""} */}
           </ul>

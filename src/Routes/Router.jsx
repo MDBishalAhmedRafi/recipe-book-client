@@ -41,8 +41,8 @@ import RecipeDetails from "../Pages/RecipeDetails";
                                 </PrivateRoute>,
                 },
                 { 
-                                path: '/my-recipies',
-                                loader: ({params}) => fetch(`http://localhost:3000/my-recipies/${params.email}`),
+                                path: '/my-recipies/:email',
+                                loader: ({params}) => fetch(`http://localhost:3000/my-recipies/${params?.email}`),
                                 element: <PrivateRoute>
                                   <MyRecipies></MyRecipies>
                                 </PrivateRoute>,

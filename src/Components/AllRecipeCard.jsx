@@ -3,7 +3,7 @@ import { FaEye, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const AllRecipeCard = ({recipies}) => {
-                const {_id, image, title, cuisineType, likeCount} = recipies
+                const { _id, image, title, cuisine, likeCount } = recipies;
                 return (
                                 <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 border border-base-300">
                                       <figure className="overflow-hidden">
@@ -19,7 +19,7 @@ const AllRecipeCard = ({recipies}) => {
                                           {title}
                                         </h2>
                                 
-                                        <p className="text-sm text-gray-500 italic">Cuisine Type: {cuisineType}</p>
+                                        <p className="text-sm text-gray-500 italic">Cuisine Type: {cuisine}</p>
                                 
                                         <div className="flex items-center gap-2 text-error mt-1">
                                           <FaHeart className="text-red-500" />
