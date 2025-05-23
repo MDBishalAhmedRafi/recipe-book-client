@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import mainLogo from "../assets/Capture-removebg-preview.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import ToggleTheme from "../Components/ToggleTheme";
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   console.log(user);
@@ -86,6 +87,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-3">
+          <ToggleTheme></ToggleTheme>
           {/* <p>{user && user.email}</p> */}
             <img
               className="bg-green-200 rounded-full p-1"
