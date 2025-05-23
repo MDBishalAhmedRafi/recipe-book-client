@@ -15,8 +15,8 @@ const AllRecipies = () => {
       : allRecipies.filter((rec) => rec.cuisine === selectedCuisine);
 
   return (
-    <div className="lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
-      <h1 className="text-center text-3xl font-bold mb-8">All Recipe</h1>
+    <div className="lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5  bg-gradient-to-r from-yellow-300 via-orange to-blue-200 rounded-3xl lg:p-4 md:p-3 p-2">
+      <h1 className="text-center text-primary text-3xl font-bold mb-8">All Recipe</h1>
 
       {/* Cuisine Filter Dropdown */}
       <div className="flex justify-end mb-6">

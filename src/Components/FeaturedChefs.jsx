@@ -1,6 +1,9 @@
 import React from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import Lottie from 'lottie-react';
+import chefAnimation from '../assets/chefAnimation.json'; 
+import { Typewriter } from 'react-simple-typewriter';
 
 const chefs = [
   { name: 'Chef Anna', image: 'https://i.ibb.co/0y6zBKfM/images-2.jpg', recipes: 34 },
@@ -11,7 +14,6 @@ const chefs = [
   { name: 'Chef Noah', image: 'https://i.ibb.co/G38phYmS/The-Surf-Club-Restaurant-March-20252328.jpg', recipes: 30 },
 ];
 
-// Autoplay plugin
 function autoplayPlugin(slider) {
   let timeout;
   let mouseOver = false;
@@ -56,7 +58,7 @@ const FeaturedChefs = () => {
       },
       breakpoints: {
         '(max-width: 768px)': {
-          slides: { perView: 1, spacing: 12 }, // 👈 Show only 1 card on mobile
+          slides: { perView: 1, spacing: 12 },
         },
       },
       created: (s) => autoplayPlugin(s),
@@ -65,8 +67,27 @@ const FeaturedChefs = () => {
   );
 
   return (
-    <div className="py-10 px-4 bg-gray-100 rounded-3xl">
-      <h2 className="text-3xl font-bold mb-6 text-center text-black">Featured Chefs</h2>
+    <div className="py-10 px-4 rounded-3xl">
+      <h2 className="text-3xl font-bold mb-4 text-center text-primary">Our Valuable Chefs 
+        <br />
+        <span className="text-red-600">
+                    <Typewriter
+                    words={['MR.ZOE', 'MR.MARCO', 'MRS.OLIVIA', 'MR.NOAH', 'MRS.ANNA', 'MR.LIAM']}
+                    loop={false}
+                    cursor
+                    cursorStyle=""
+                    typeSpeed={60}
+                    deleteSpeed={20}
+                    delaySpeed={2000}
+                  />
+                  </span>
+      </h2>
+
+      {/* 👇 Lottie Animation */}
+      <div className="flex justify-center mb-6">
+        <Lottie animationData={chefAnimation} loop={true} className="w-48 h-48" />
+      </div>
+
       <div ref={sliderRef} className="keen-slider">
         {chefs.map((chef) => (
           <div
@@ -86,5 +107,5 @@ const FeaturedChefs = () => {
     </div>
   );
 };
-
+//81no line a boshbe 
 export default FeaturedChefs;

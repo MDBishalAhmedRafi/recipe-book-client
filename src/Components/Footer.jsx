@@ -7,8 +7,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 const Footer = () => {
                 return (
-                                <div className="lg:w-11/12 lg:mx-auto mx-2">
-      <footer className="footer footer-horizontal footer-center bg-primary text-primary-content p-10">
+                                <div className="lg:w-11/12 lg:mx-auto mx-2 ">
+      <footer className="footer  bg-gradient-to-r from-black via-orange to-blue-200 rounded-3xl footer-horizontal footer-center text-primary-content p-10">
         <aside>
           <img
             className="inline-block fill-current w-[70px] h-[70px]"

@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Lottie from 'lottie-react';
+import cookingAnimation from '../assets/cooking.json'; // Adjust the path if needed
 
 const testimonials = [
   {
@@ -34,8 +36,15 @@ const cardVariants = {
 
 const UserTestimonials = () => {
   return (
-    <div className="bg-white py-12 px-4 rounded-3xl">
-      <h2 className="text-3xl font-bold text-center mb-8 text-black">What Our Users Say</h2>
+    //40 no line a boshbe 
+    <div className="py-12 px-4 rounded-3xl">
+      <h2 className="text-3xl font-bold text-center mb-4 text-black">What Our Users Say</h2>
+
+      {/* Lottie Animation */}
+      <div className="flex justify-center mb-8">
+        <Lottie animationData={cookingAnimation} loop={true} className="w-48 h-48" />
+      </div>
+
       <div className="grid gap-8 md:grid-cols-3">
         {testimonials.map((user, index) => (
           <motion.div

@@ -26,10 +26,10 @@ const Navbar = () => {
       .catch(() => {});
   };
   return (
-    <div className="lg:w-11/12 lg:mx-auto mx-2">
+    <div className="lg:w-11/12 lg:mx-auto mx-2  bg-gradient-to-r from-yellow-200 via-orange to-red-100">
       <div className="navbar shadow-sm mb-5">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow "
             >
               <li>
                 <NavLink to="/">Home</NavLink>
@@ -87,7 +87,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-3">
-          <ToggleTheme></ToggleTheme>
+          {/* <ToggleTheme></ToggleTheme> */}
           {/* <p>{user && user.email}</p> */}
             <img
               className="bg-green-200 rounded-full p-1"

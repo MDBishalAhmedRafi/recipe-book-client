@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
+const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
   const {
     _id,
     image,
@@ -69,6 +69,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
       .then((res) => res.json())
       .then((data) => {
         setIsModalOpen(false);
+        getRecipe();
         if (data.modifiedCount) {
           Swal.fire({
             title: "Recipe Updated Successfully!",
@@ -76,7 +77,24 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
             draggable: true,
           });
         }
+         
+        
       });
+
+
+    fetch(`http://localhost:3000/my-recipies/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedRecipe),
+    })
+     .then((res) => res.json())
+      .then((data) => { 
+        console.log(data);
+      })
+
+
 
     // fetch(`http://localhost:3000/my-recipies/${_id}`, {
     //   method: "PUT",
@@ -101,10 +119,10 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
 
   return (
     <>
-      <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
+      <div className="card lg:card-side bg-base-100 shadow-sm">
         <figure className="lg:w-5/12">
           <img
-            className="rounded-3xl w-full h-full object-cover"
+            className="rounded-2xl w-full h-full object-cover"
             src={image}
             alt="Recipe"
           />
@@ -136,7 +154,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray }) => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-40 px-4">
-          <div className="bg-white p-5 rounded-xl w-full max-w-sm shadow-lg">
+          <div className=" p-5 bg-white rounded-xl w-full max-w-sm shadow-lg">
             <h2 className="text-lg font-semibold mb-3 text-center">
               Update Recipe
             </h2>
@@ -257,3 +275,5 @@ export default MyRecipieCard;
 //  const remainingCoffee = recip.filter((reci) => reci._id !== _id);
 // console.log(remainingCoffee);
 // setRecipe(remainingCoffee);
+
+//154no line a bshbe 

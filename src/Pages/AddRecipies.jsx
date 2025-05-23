@@ -74,14 +74,14 @@ const AddRecipies = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-base-200 rounded-lg shadow-lg">
+    <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-yellow-200 via-orange to-red-200 lg:mb-10 md:mb-7 mb-5 rounded-lg shadow-lg">
       <h2 className="text-3xl font-bold mb-6 flex items-center gap-2 justify-center">
         <FaUtensils /> Add a New Recipe
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Image URL */}
         <div>
-          <label className="label font-semibold">Photo URL</label>
+          <label className="label font-bold text-black">Photo URL</label>
           <input
             type="text"
             name="image"
@@ -95,7 +95,7 @@ const AddRecipies = () => {
 
         {/* Title */}
         <div>
-          <label className="label font-semibold">Title</label>
+          <label className="label font-bold text-black">Title</label>
           <input
             type="text"
             name="title"
@@ -109,7 +109,7 @@ const AddRecipies = () => {
 
         {/* Ingredients */}
         <div>
-          <label className="label font-semibold">Ingredients</label>
+          <label className="label font-bold text-black">Ingredients</label>
           <textarea
             name="ingredients"
             value={formData.ingredients}
@@ -123,7 +123,7 @@ const AddRecipies = () => {
 
         {/* Instructions */}
         <div>
-          <label className="label font-semibold">Instructions</label>
+          <label className="label font-bold text-black">Instructions</label>
           <textarea
             name="instructions"
             value={formData.instructions}
@@ -137,7 +137,7 @@ const AddRecipies = () => {
 
         {/* Cuisine Dropdown */}
         <div>
-          <label className="label font-semibold">Cuisine Type</label>
+          <label className="label font-bold text-black">Cuisine Type</label>
           <select
             name="cuisine"
             value={formData.cuisine}
@@ -154,7 +154,7 @@ const AddRecipies = () => {
 
         {/* Preparation Time */}
         <div>
-          <label className="label font-semibold">Preparation Time (minutes)</label>
+          <label className="label font-bold text-black">Preparation Time (minutes)</label>
           <input
             type="number"
             name="prepTime"
@@ -168,10 +168,10 @@ const AddRecipies = () => {
 
         {/* Categories */}
         <div>
-          <label className="label font-semibold">Categories</label>
+          <label className="label font-bold text-black">Categories</label>
           <div className="flex flex-wrap gap-4">
             {CATEGORIES.map((cat) => (
-              <label key={cat} className="label cursor-pointer">
+              <label key={cat} className="label cursor-pointer font-semibold text-black">
                 <input
                   type="checkbox"
                   name="categories"
@@ -188,7 +188,7 @@ const AddRecipies = () => {
 
         {/* Like Count */}
         <div>
-          <label className="label font-semibold">Like Count</label>
+          <label className="label font-bold text-black">Like Count</label>
           <input
             type="number"
             name="likeCount"
