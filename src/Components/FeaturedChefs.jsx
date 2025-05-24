@@ -92,15 +92,15 @@ const FeaturedChefs = () => {
         {chefs.map((chef) => (
           <div
             key={chef.name}
-            className="keen-slider__slide bg-white rounded-2xl shadow-md w-full p-4 text-center text-black"
+            className="keen-slider__slide bg-white dark:bg-gray-900 rounded-2xl shadow-md w-full p-4 text-center text-black"
           >
             <img
               src={chef.image}
               alt={chef.name}
               className="w-24 h-24 rounded-full mx-auto object-cover"
             />
-            <h3 className="text-xl font-semibold mt-4">{chef.name}</h3>
-            <p className="text-sm text-gray-600">{chef.recipes} Recipes</p>
+            <h3 className="text-xl font-bold mt-4 dark:text-gray-100">{chef.name}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-100">{chef.recipes} Recipes</p>
           </div>
         ))}
       </div>

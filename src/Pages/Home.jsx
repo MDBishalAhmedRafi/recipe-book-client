@@ -17,7 +17,7 @@ const Home = () => {
         <h1 className="text-center text-3xl font-bold mb-8 text-primary">
           Our Top Recipes <br /> <span className="text-red-600">
             <Typewriter
-            words={['is Italian,', 'is Maxican', 'is Indian', 'is Chinese', 'is Others']}
+            words={['is Italian', 'is Maxican', 'is Indian', 'is Chinese', 'is Others']}
             loop={false}
             cursor
             cursorStyle=""

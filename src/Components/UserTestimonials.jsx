@@ -49,7 +49,7 @@ const UserTestimonials = () => {
         {testimonials.map((user, index) => (
           <motion.div
             key={index}
-            className="bg-gray-100 rounded-2xl shadow p-6 text-center hover:shadow-md transition"
+            className="bg-gray-100 dark:bg-gray-900 rounded-2xl shadow p-6 text-center hover:shadow-md transition"
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
@@ -61,8 +61,8 @@ const UserTestimonials = () => {
               alt={user.name}
               className="w-16 h-16 mx-auto rounded-full mb-4 object-cover"
             />
-            <p className="text-gray-700 italic mb-3">"{user.review}"</p>
-            <p className="font-semibold text-gray-800">{user.name}</p>
+            <p className="text-gray-700 dark:text-gray-100 italic mb-3">"{user.review}"</p>
+            <p className="font-semibold text-gray-800 dark:text-gray-100">{user.name}</p>
           </motion.div>
         ))}
       </div>

@@ -74,7 +74,7 @@ const AddRecipies = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-yellow-200 via-orange to-red-200 lg:mb-10 md:mb-7 mb-5 rounded-lg shadow-lg">
+    <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-blue-200 via-orange to-yellow-200 lg:mb-10 md:mb-7 mb-5 rounded-lg shadow-lg">
       <h2 className="text-3xl font-bold mb-6 flex items-center gap-2 justify-center">
         <FaUtensils /> Add a New Recipe
       </h2>
@@ -178,7 +178,7 @@ const AddRecipies = () => {
                   value={cat}
                   checked={formData.categories.includes(cat)}
                   onChange={handleChange}
-                  className="checkbox mr-2"
+                  
                 />
                 {cat}
               </label>

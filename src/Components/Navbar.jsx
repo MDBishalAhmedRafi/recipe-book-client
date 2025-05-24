@@ -3,10 +3,14 @@ import { Link, NavLink } from "react-router";
 import mainLogo from "../assets/Capture-removebg-preview.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
-import ToggleTheme from "../Components/ToggleTheme";
+import ToggleTheme from "./ToggleTheme";
+
+
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
-  console.log(user);
+
+  
+  // console.log(user);
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -33,7 +37,7 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-5 dark:text-gray-900"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -69,7 +73,7 @@ const Navbar = () => {
             <img className="w-[70px] h-[70px]" src={mainLogo} alt="" />
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex dark:text-gray-900">
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink to="/">Home</NavLink>
@@ -87,8 +91,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-3">
-          {/* <ToggleTheme></ToggleTheme> */}
-          {/* <p>{user && user.email}</p> */}
+          <ToggleTheme></ToggleTheme>
             <img
               className="bg-green-200 rounded-full p-1"
               src={user && user.photoURL}

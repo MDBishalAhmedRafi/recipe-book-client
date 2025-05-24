@@ -1,36 +1,3 @@
-// import React from 'react';
-// import { useLoaderData } from 'react-router';
-
-// const RecipeDetails = () => {
-//                 const details = useLoaderData()
-//                 return (
-// <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
-//   <figure className='lg:w-5/12 '>
-//     <img className='rounded-3xl'
-//       src={details.image}
-//       alt="Album" />
-//   </figure>
-//   <div className="card-body">
-//     <h2 className="card-title">{details.title}</h2>
-//     <p>Ingredients: {details.ingredients}</p>
-//     <p>Instructions: {details.instructions}</p>
-//     <p>Cuisine: {details.cuisine}</p>
-//     <p>Preparation-Time: {details.prepTime}</p>
-//     {details.categories.map((cate, index) => (
-//           <p key={index}>categories: {cate}</p>
-//         ))}
-//         <p>Total Likes: {details.likeCount}</p>
-//     <div className="card-actions justify-end">
-//       <button className="btn btn-primary">Like</button>
-//     </div>
-//   </div>
-// </div>
-
-//                 );
-// };
-
-// export default RecipeDetails;
-
 import React, { useContext, useState } from 'react';
 import { AuthContext } from "../Provider/AuthProvider";
 import { useLoaderData } from 'react-router';
@@ -42,13 +9,6 @@ const RecipeDetails = () => {
 
   const [likeCount, setLikeCount] = useState(details.likeCount);
   const [hasLiked, setHasLiked] = useState(false);
-
-  // useEffect(() => {
-  //   const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
-  //   if (likedRecipes.includes(details._id)) {
-  //     setHasLiked(true);
-  //   }
-  // }, [details._id, user]);
 
   const handleLike = async () => {
     if (user?.email === details.email) {
@@ -88,7 +48,6 @@ const RecipeDetails = () => {
       });
 
       const result = await response.json();
-
       if (result.modifiedCount > 0) {
         setLikeCount(prev => prev + 1);
         setHasLiked(true);
@@ -106,19 +65,19 @@ const RecipeDetails = () => {
   };
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
+    <div className="card lg:card-side bg-base-100 shadow-sm lg:p-4 md:p-3 p-2 lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
       <figure className='lg:w-5/12 '>
         <img className='rounded-3xl' src={details.image} alt="Recipe" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{details.title}</h2>
-        <p className="text-lg font-medium text-indigo-700">{likeCount} people interested in this recipe</p>
-        <p>Ingredients: {details.ingredients}</p>
-        <p>Instructions: {details.instructions}</p>
-        <p>Cuisine: {details.cuisine}</p>
-        <p>Preparation-Time: {details.prepTime}</p>
+        <p className="text-lg font-bold dark:text-indigo-700 text-red-700">{likeCount} people interested in this recipe</p>
+        <h2 className="card-title font-bold">{details.title}</h2>
+        <p className='font-bold'>Ingredients: {details.ingredients}</p>
+        <p className='font-bold'>Instructions: {details.instructions}</p>
+        <p className='font-bold'>Cuisine: {details.cuisine}</p>
+        <p className='font-bold'>Preparation-Time: {details.prepTime}</p>
         {details.categories.map((cate, index) => (
-          <p key={index}>Categories: {cate}</p>
+          <p className='font-bold' key={index}>Categories: {cate}</p>
         ))}
         <div className="card-actions justify-end">
           <button

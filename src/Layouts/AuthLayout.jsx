@@ -4,9 +4,13 @@ import Footer from '../Components/Footer';
 import { ToastContainer } from 'react-toastify';
 import { Outlet } from 'react-router';
 
+
+
 const AuthLayout = () => {
+    
                 return (
-                                 <div>
+                                // <ThemeProvider>
+                                     <div>
                                     <ToastContainer/>
                                             <header>
                                                 <Navbar></Navbar>
@@ -18,6 +22,7 @@ const AuthLayout = () => {
                                                                 <Footer></Footer>
                                                 </footer>
                                 </div>
+                                // </ThemeProvider>
                 );
 };
 

@@ -94,22 +94,6 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
         console.log(data);
       })
 
-
-
-    // fetch(`http://localhost:3000/my-recipies/${_id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(updatedRecipe),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.modifiedCount > 0) {
-    //       Swal.fire("Updated!", "Your recipe has been updated.", "success");
-    //       setIsModalOpen(false);
-    //     }
-    //   });
   };
 
   const handleInputChange = (e) => {
@@ -119,7 +103,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
   return (
     <>
-      <div className="card lg:card-side bg-base-100 shadow-sm">
+      <div className="card lg:card-side bg-base-100 shadow-sm lg:p-4 md:p-3 p-2">
         <figure className="lg:w-5/12">
           <img
             className="rounded-2xl w-full h-full object-cover"
@@ -128,12 +112,12 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>Ingredients: {ingredients}</p>
-          <p>Instructions: {instructions}</p>
-          <p>Cuisine: {cuisine}</p>
-          <p>Preparation-Time: {prepTime}</p>
-          <p>Total Likes: {likeCount}</p>
+          <h2 className="card-title font-bold">{title}</h2>
+          <p className="font-bold">Ingredients: {ingredients}</p>
+          <p className="font-bold">Instructions: {instructions}</p>
+          <p className="font-bold">Cuisine: {cuisine}</p>
+          <p className="font-bold">Preparation-Time: {prepTime}</p>
+          <p className="font-bold">Total Likes: {likeCount}</p>
           <div className="card-actions justify-end">
             <button
               onClick={() => setIsModalOpen(true)}
@@ -155,7 +139,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-40 px-4">
           <div className=" p-5 bg-white rounded-xl w-full max-w-sm shadow-lg">
-            <h2 className="text-lg font-semibold mb-3 text-center">
+            <h2 className="text-lg font-semibold mb-3 text-center dark:text-gray-900">
               Update Recipe
             </h2>
 
@@ -170,7 +154,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
             <form onSubmit={handleUpdateSubmit} className="space-y-3">
               <div>
                 <label className="label">
-                  <span className="label-text text-sm">Title</span>
+                  <span className="label-text text-sm dark:text-gray-900">Title</span>
                 </label>
                 <input
                   type="text"
@@ -184,7 +168,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
               <div>
                 <label className="label">
-                  <span className="label-text text-sm">Ingredients</span>
+                  <span className="label-text text-sm dark:text-gray-900">Ingredients</span>
                 </label>
                 <input
                   type="text"
@@ -198,7 +182,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
               <div>
                 <label className="label">
-                  <span className="label-text text-sm">Instructions</span>
+                  <span className="label-text text-sm dark:text-gray-900">Instructions</span>
                 </label>
                 <input
                   type="text"
@@ -212,7 +196,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
               <div>
                 <label className="label">
-                  <span className="label-text text-sm">Cuisine</span>
+                  <span className="label-text text-sm dark:text-gray-900">Cuisine</span>
                 </label>
                 <select
                   name="cuisine"
@@ -231,7 +215,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
               <div>
                 <label className="label">
-                  <span className="label-text text-sm">
+                  <span className="label-text text-sm dark:text-gray-900">
                     Preparation Time (minutes)
                   </span>
                 </label>
@@ -270,10 +254,4 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
 export default MyRecipieCard;
 
-// const [recip, setRecipe] =useState(MyRecipieCard)
 
-//  const remainingCoffee = recip.filter((reci) => reci._id !== _id);
-// console.log(remainingCoffee);
-// setRecipe(remainingCoffee);
-
-//154no line a bshbe 

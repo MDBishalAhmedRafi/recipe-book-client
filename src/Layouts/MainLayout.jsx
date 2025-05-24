@@ -5,10 +5,14 @@ import Footer from "../Components/Footer";
 import { ToastContainer } from "react-toastify";
 import Loading from "../Pages/Loading";
 
+
 const MainLayout = () => {
+  
   const {state} = useNavigation()
   return (
-    <div>
+    // <ThemeProvider>
+      
+      <div>
       <ToastContainer/>
       <header>
                 <Navbar></Navbar>
@@ -20,6 +24,7 @@ const MainLayout = () => {
                 <Footer></Footer>
       </footer>
     </div>
+    // </ThemeProvider>
   );
 };
 
