@@ -40,7 +40,7 @@ const RecipeDetails = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/recipies/${details._id}`, {
+      const response = await fetch(`https://recipe-book-app-server-sepia.vercel.app/recipies/${details._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

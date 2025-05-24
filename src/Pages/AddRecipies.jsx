@@ -54,7 +54,7 @@ const AddRecipies = () => {
       likeCount: 0,
       email: "",
     });
-    fetch('http://localhost:3000/recipies', { 
+    fetch('https://recipe-book-app-server-sepia.vercel.app/recipies', { 
       method: 'POST',
       headers: { 
             'content-type': 'application/json'

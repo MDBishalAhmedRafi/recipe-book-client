@@ -35,7 +35,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/my-recipies/${_id}`, {
+        fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -59,7 +59,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
     e.preventDefault();
 
     //send the updated recipe to the database
-    fetch(`http://localhost:3000/my-recipies/${_id}`, {
+    fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -82,7 +82,7 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
       });
 
 
-    fetch(`http://localhost:3000/my-recipies/${_id}`, {
+    fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

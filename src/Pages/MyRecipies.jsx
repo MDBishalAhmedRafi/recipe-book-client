@@ -13,7 +13,7 @@ const MyRecipies = () => {
 
       const {user} = use(AuthContext)
        const getRecipe = () => { 
-             fetch(`http://localhost:3000/my-recipies/${user.email}`)
+             fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${user.email}`)
      .then((res) => res.json())
       .then((data) => { 
          console.log(data);

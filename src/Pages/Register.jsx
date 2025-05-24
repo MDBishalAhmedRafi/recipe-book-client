@@ -97,8 +97,8 @@ const Register = () => {
   };
 
   return (
-    <div className="lg:w-11/12 lg:mx-auto mx-s">
-      <div className="min-h-screen bg-gradient-to-r from-red-200 via-orange to-orange-200 lg:mb-10 md:mb-7 mb-5 flex items-center justify-center rounded-2xl">
+    <div className="lg:w-11/12 lg:mx-auto mx-2">
+      <div className="min-h-screen bg-gradient-to-r from-red-200 via-orange to-orange-200 lg:mb-10 md:mb-7 mb-5  flex items-center justify-center rounded-2xl">
         <div className="bg-white shadow-md rounded-xl p-8 w-full max-w-md">
           <h2 className="text-2xl font-semibold text-center text-gray-800">
             Register Your Account

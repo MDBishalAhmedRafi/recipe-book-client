@@ -24,14 +24,14 @@ import RecipeDetails from "../Pages/RecipeDetails";
                 { 
                                 index: true,
                                 path: '/',
-                                loader: () => fetch('http://localhost:3000/recipies'),
+                                loader: () => fetch('https://recipe-book-app-server-sepia.vercel.app/recipies'),
                                 
                                 element: <Home></Home>,
                                 hydrateFallbackElement: <Loading></Loading>
                 },
                 { 
                                 path: '/all-recipies',
-                                loader: () => fetch('http://localhost:3000/more-recipies'),
+                                loader: () => fetch('https://recipe-book-app-server-sepia.vercel.app/more-recipies'),
                                 element: <AllRecipies></AllRecipies>,
                 },
                 { 
@@ -42,7 +42,7 @@ import RecipeDetails from "../Pages/RecipeDetails";
                 },
                 { 
                                 path: '/my-recipies/:email',
-                                loader: ({params}) => fetch(`http://localhost:3000/my-recipies/${params?.email}`),
+                                loader: ({params}) => fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${params?.email}`),
                                 element: <PrivateRoute>
                                   <MyRecipies></MyRecipies>
                                 </PrivateRoute>,
@@ -61,7 +61,7 @@ import RecipeDetails from "../Pages/RecipeDetails";
                 },
                 { 
                                 path: '/recipe-details/:id',
-                                loader: ({params}) => fetch(`http://localhost:3000/more-recipies/${params.id}`),
+                                loader: ({params}) => fetch(`https://recipe-book-app-server-sepia.vercel.app/more-recipies/${params.id}`),
                                 element: <PrivateRoute>
                                   <RecipeDetails></RecipeDetails>
                                 </PrivateRoute>
