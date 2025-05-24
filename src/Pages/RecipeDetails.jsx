@@ -1,97 +1,140 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
-
-const RecipeDetails = () => {
-                const details = useLoaderData()
-                return (
-<div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
-  <figure className='lg:w-5/12 '>
-    <img className='rounded-3xl'
-      src={details.image}
-      alt="Album" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">{details.title}</h2>
-    <p>Ingredients: {details.ingredients}</p>
-    <p>Instructions: {details.instructions}</p>
-    <p>Cuisine: {details.cuisine}</p>
-    <p>Preparation-Time: {details.prepTime}</p>
-    {details.categories.map((cate, index) => (
-          <p key={index}>categories: {cate}</p>
-        ))}
-        <p>Total Likes: {details.likeCount}</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Like</button>
-    </div>
-  </div>
-</div>
-
-                );
-};
-
-export default RecipeDetails;
-
-// import React, { useContext, useState } from 'react';
-
-// import { AuthContext } from "../Provider/AuthProvider";
+// import React from 'react';
 // import { useLoaderData } from 'react-router';
 
 // const RecipeDetails = () => {
-//   const details = useLoaderData();
-//   const { user } = useContext(AuthContext);
-
-//   const [likeCount, setLikeCount] = useState(details.likeCount);
-
-//   const handleLike = async () => {
-//     if (user?.email === details.email) {
-//       alert("You can't like your own recipe.");
-//       return;
-//     }
-
-//     try {
-//       const response = await fetch(`http://localhost:3000//recipies/${details._id}`, {
-//         method: 'PATCH',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       });
-
-//       const result = await response.json();
-
-//       if (result.modifiedCount > 0) {
-//         setLikeCount(prev => prev + 1);
-//       } else {
-//         console.error('No update made to the recipe.');
-//       }
-//     } catch (err) {
-//       console.error('Failed to like recipe:', err);
-//     }
-//   };
-
-//   return (
-//     <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
-//       <figure className='lg:w-5/12 '>
-//         <img className='rounded-3xl' src={details.image} alt="Album" />
-//       </figure>
-//       <div className="card-body">
-//         <h2 className="card-title">{details.title}</h2>
-//         <p className="text-lg font-medium text-indigo-700">{likeCount} people interested in this recipe</p>
-//         <p>Ingredients: {details.ingredients}</p>
-//         <p>Instructions: {details.instructions}</p>
-//         <p>Cuisine: {details.cuisine}</p>
-//         <p>Preparation-Time: {details.prepTime}</p>
-//         {details.categories.map((cate, index) => (
-//           <p key={index}>Categories: {cate}</p>
+//                 const details = useLoaderData()
+//                 return (
+// <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
+//   <figure className='lg:w-5/12 '>
+//     <img className='rounded-3xl'
+//       src={details.image}
+//       alt="Album" />
+//   </figure>
+//   <div className="card-body">
+//     <h2 className="card-title">{details.title}</h2>
+//     <p>Ingredients: {details.ingredients}</p>
+//     <p>Instructions: {details.instructions}</p>
+//     <p>Cuisine: {details.cuisine}</p>
+//     <p>Preparation-Time: {details.prepTime}</p>
+//     {details.categories.map((cate, index) => (
+//           <p key={index}>categories: {cate}</p>
 //         ))}
-//         <div className="card-actions justify-end">
-//           <button onClick={handleLike} className="btn btn-primary">Like</button>
-//         </div>
-//       </div>
+//         <p>Total Likes: {details.likeCount}</p>
+//     <div className="card-actions justify-end">
+//       <button className="btn btn-primary">Like</button>
 //     </div>
-//   );
+//   </div>
+// </div>
+
+//                 );
 // };
 
 // export default RecipeDetails;
+
+import React, { useContext, useState } from 'react';
+import { AuthContext } from "../Provider/AuthProvider";
+import { useLoaderData } from 'react-router';
+import { toast } from 'react-toastify';
+
+const RecipeDetails = () => {
+  const details = useLoaderData();
+  const { user } = useContext(AuthContext);
+
+  const [likeCount, setLikeCount] = useState(details.likeCount);
+  const [hasLiked, setHasLiked] = useState(false);
+
+  // useEffect(() => {
+  //   const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
+  //   if (likedRecipes.includes(details._id)) {
+  //     setHasLiked(true);
+  //   }
+  // }, [details._id, user]);
+
+  const handleLike = async () => {
+    if (user?.email === details.email) {
+     toast.warn("You Can't like your own recipe", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      return;
+    }
+
+    if (hasLiked) {
+       toast.warn("You have already liked this recipe.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3000/recipies/${details._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      const result = await response.json();
+
+      if (result.modifiedCount > 0) {
+        setLikeCount(prev => prev + 1);
+        setHasLiked(true);
+
+        // Store in localStorage
+        const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
+        likedRecipes.push(details._id);
+        localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes));
+      } else {
+        console.error('No update made to the recipe.');
+      }
+    } catch (err) {
+      console.error('Failed to like recipe:', err);
+    }
+  };
+
+  return (
+    <div className="card lg:card-side bg-base-100 shadow-sm lg:w-11/12 lg:mx-auto mx-2 lg:mb-10 md:mb-7 mb-5">
+      <figure className='lg:w-5/12 '>
+        <img className='rounded-3xl' src={details.image} alt="Recipe" />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">{details.title}</h2>
+        <p className="text-lg font-medium text-indigo-700">{likeCount} people interested in this recipe</p>
+        <p>Ingredients: {details.ingredients}</p>
+        <p>Instructions: {details.instructions}</p>
+        <p>Cuisine: {details.cuisine}</p>
+        <p>Preparation-Time: {details.prepTime}</p>
+        {details.categories.map((cate, index) => (
+          <p key={index}>Categories: {cate}</p>
+        ))}
+        <div className="card-actions justify-end">
+          <button
+            onClick={handleLike}
+            className="btn btn-primary"
+            // disabled={hasLiked}
+          >
+            {hasLiked ? "Liked" : "Like"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RecipeDetails;
 
 
 {/* <div className="mb-4">
