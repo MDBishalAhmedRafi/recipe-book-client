@@ -57,7 +57,6 @@ const MyRecipieCard = ({ recipe, setRecipe, recipeArray, getRecipe }) => {
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
-
     //send the updated recipe to the database
     fetch(`https://recipe-book-app-server-sepia.vercel.app/my-recipies/${_id}`, {
       method: "PUT",
