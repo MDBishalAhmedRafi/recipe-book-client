@@ -4,6 +4,8 @@ import { Outlet, useNavigation } from "react-router";
 import Footer from "../Components/Footer";
 import { ToastContainer } from "react-toastify";
 import Loading from "../Pages/Loading";
+import { ViewModeContext } from "../Context/ViewModeContext";
+
 
 
 const MainLayout = () => {
@@ -12,8 +14,9 @@ const MainLayout = () => {
   return (
     // <ThemeProvider>
       
-      <div>
-      <ToastContainer/>
+      <ViewModeContext.Provider value="cards">
+        <div>
+      
       <header>
                 <Navbar></Navbar>
       </header>
@@ -24,6 +27,7 @@ const MainLayout = () => {
                 <Footer></Footer>
       </footer>
     </div>
+      </ViewModeContext.Provider>
     // </ThemeProvider>
   );
 };

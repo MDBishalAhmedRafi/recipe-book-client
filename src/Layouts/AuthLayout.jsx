@@ -11,7 +11,7 @@ const AuthLayout = () => {
                 return (
                                 // <ThemeProvider>
                                      <div>
-                                    <ToastContainer/>
+                                    
                                             <header>
                                                 <Navbar></Navbar>
                                                 </header>    

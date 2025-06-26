@@ -30,7 +30,7 @@ const Navbar = () => {
       .catch(() => {});
   };
   return (
-    <div className="lg:w-11/12 lg:mx-auto mx-2  bg-gradient-to-r from-yellow-200 via-orange to-red-100">
+    <div className="lg:w-11/12 lg:mx-auto mx-2 bg-gradient-to-r from-yellow-200 via-orange to-red-100">
       <div className="navbar shadow-sm mb-5">
         <div className="navbar-start">
           <div className="dropdown ">
@@ -61,11 +61,23 @@ const Navbar = () => {
               <li>
                 <NavLink to="/all-recipies">All-Recipies</NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/add-recipies">Add-Recipies</NavLink>
               </li>
               <li>
                 <NavLink to={`/my-recipies/${user?.email}`}>My-Recipies</NavLink>
+              </li> */}
+               <li>
+                <NavLink to="/about-us">About US</NavLink>
+              </li>
+               <li>
+                <NavLink to="/contact-us">Contact US</NavLink>
+              </li>
+               <li>
+                <NavLink to="/support">Support</NavLink>
+              </li>
+               <li>
+                <NavLink to="/dashboard">DashBoard</NavLink>
               </li>
             </ul>
           </div>
@@ -81,13 +93,24 @@ const Navbar = () => {
             <li>
               <NavLink to="/all-recipies">All-Recipies</NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/add-recipies">Add-Recipies</NavLink>
             </li>
             <li>
               <NavLink to={`/my-recipies/${user?.email}`}>My-Recipies</NavLink>
-            </li>
-            {/* {user ? <li><NavLink to="/recipe-details">Recipe-Details</NavLink></li> : ""} */}
+            </li> */}
+            <li>
+                <NavLink to="/about-us">About US</NavLink>
+              </li>
+               <li>
+                <NavLink to="/contact-us">Contact US</NavLink>
+              </li>
+               <li>
+                <NavLink to="/support">Support</NavLink>
+              </li>
+               <li>
+                <NavLink to="/dashboard">DashBoard</NavLink>
+              </li>
           </ul>
         </div>
         <div className="navbar-end space-x-3">
