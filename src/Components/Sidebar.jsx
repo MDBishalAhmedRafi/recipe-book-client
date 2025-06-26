@@ -34,7 +34,7 @@ const Sidebar = () => {
     };
 
   const navItemStyle = ({ isActive }) =>
-    `block px-4 py-2 rounded hover:bg-orange-200 ${
+    `block px-4 py-2 rounded hover:bg-orange-200 dark:text-black ${
       isActive ? "bg-orange-300 font-semibold" : ""
     }`;
 
@@ -66,6 +66,9 @@ const Sidebar = () => {
         } md:block bg-orange-50 w-64 min-h-screen p-5 border-r relative`}
       >
         <nav className="space-y-2">
+                    <NavLink to="/" className={navItemStyle}>
+             Back to Home
+          </NavLink>
           <NavLink to="/dashboard" className={navItemStyle}>
              Dashboard
           </NavLink>

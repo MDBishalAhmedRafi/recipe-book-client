@@ -1,78 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, use } from "react";
 import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { AuthContext } from "../Provider/AuthProvider";
+import { FaHeart, FaUserAlt, FaUtensils } from "react-icons/fa";
 
 const Stats = () => {
-  const [stats, setStats] = useState({
+  const { user } = use(AuthContext);
+
+  const [statsData, setStatsData] = useState({
     totalRecipes: 0,
-    totalLikes: 0,
+    userRecipesCount: 0,
     totalUsers: 0,
   });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
+    AOS.init({ duration: 1000 });
+
     const fetchStats = async () => {
       try {
-        const [recipeRes, userRes] = await Promise.all([
-          fetch("https://recipe-book-app-server-sepia.vercel.app/recipies/stats"),
-          fetch("https://recipe-book-app-server-sepia.vercel.app/users/count"),
-        ]);
-
-        const recipeData = await recipeRes.json();
-        const userData = await userRes.json();
-
-        setStats({
-          totalRecipes: recipeData.totalRecipes,
-          totalLikes: recipeData.totalLikes,
-          totalUsers: userData.totalUsers,
-        });
-        setLoading(false);
+        const res = await fetch(
+          `https://recipe-book-app-server-sepia.vercel.app/stats?email=${user?.email}`
+        );
+        const data = await res.json();
+        setStatsData(data);
       } catch (err) {
-        console.error("Error fetching stats:", err);
-        setError("Failed to load stats. Please try again later.");
-        setLoading(false);
+        console.error("Failed to fetch stats:", err);
       }
     };
 
-    fetchStats();
-  }, []);
+    if (user?.email) {
+      fetchStats();
+    }
+  }, [user?.email]);
 
-  if (loading) {
-    return <div className="text-center text-lg font-semibold py-10">Loading stats...</div>;
-  }
+  const loggedInUser = {
+    name: user?.displayName || "Unknown User",
+    email: user?.email || "No Email",
+    photo: user?.photoURL || "https://i.pravatar.cc/150?img=10",
+  };
 
-  if (error) {
-    return <div className="text-center text-red-500 py-10">{error}</div>;
-  }
+  const stats = [
+    {
+      title: "Total Foods",
+      value: statsData.totalRecipes,
+      icon: <FaUtensils className="text-3xl" />,
+      gradient: "from-green-400 to-blue-500",
+    },
+    {
+      title: "Your Added Foods",
+      value: statsData.userRecipesCount,
+      icon: <FaHeart className="text-3xl" />,
+      gradient: "from-pink-500 to-rose-400",
+    },
+    {
+      title: "Total Users",
+      value: statsData.totalUsers,
+      icon: <FaUserAlt className="text-3xl" />,
+      gradient: "from-indigo-400 to-purple-600",
+    },
+  ];
 
   return (
-    <div className="lg:w-11/12 mx-auto p-4 mt-10">
-      <h1 className="text-3xl text-center font-bold text-primary mb-10">📊 Website Statistics</h1>
+    <div className="min-h-screen bg-gradient-to-r from-blue-200 via-orange to-yellow-200 rounded-2xl py-10 px-4 md:px-20">
+      {/* Logged-in User Card */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-xl mx-auto bg-white shadow-lg rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:gap-6 gap-4 mb-10 text-center sm:text-left"
+      >
+        <img
+          src={loggedInUser.photo}
+          alt="user"
+          className="w-20 h-20 rounded-full border-4 border-blue-500"
+        />
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">{loggedInUser.name}</h2>
+          <p className="text-sm text-gray-600">{loggedInUser.email}</p>
+        </div>
+      </motion.div>
 
+      {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-yellow-100 rounded-2xl p-6 shadow text-center"
-        >
-          <p className="text-5xl font-bold text-orange-500">{stats.totalRecipes}</p>
-          <p className="mt-2 text-xl font-semibold text-gray-700">Total Recipes</p>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-orange-100 rounded-2xl p-6 shadow text-center"
-        >
-          <p className="text-5xl font-bold text-red-500">{stats.totalLikes}</p>
-          <p className="mt-2 text-xl font-semibold text-gray-700">Total Likes</p>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-blue-100 rounded-2xl p-6 shadow text-center"
-        >
-          <p className="text-5xl font-bold text-blue-500">{stats.totalUsers}</p>
-          <p className="mt-2 text-xl font-semibold text-gray-700">Total Users</p>
-        </motion.div>
+        {stats.map((stat, index) => (
+          <motion.div
+            key={index}
+            className={`bg-gradient-to-r ${stat.gradient} text-white p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4`}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div className="flex-1">
+              <h3 className="text-lg font-medium">{stat.title}</h3>
+              <p className="text-3xl font-bold">{stat.value}</p>
+            </div>
+            <div className="bg-white bg-opacity-20 p-4 rounded-full">
+              {stat.icon}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
