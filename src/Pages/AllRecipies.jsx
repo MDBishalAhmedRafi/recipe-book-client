@@ -113,9 +113,9 @@ const AllRecipies = () => {
                     </div>
                   </div>
                 </td>
-                <td>{recipe.title}</td>
-                <td>{recipe.cuisine}</td>
-                <td>{recipe.likeCount}</td>
+                <td className="dark:text-black">{recipe.title}</td>
+                <td className="dark:text-black">{recipe.cuisine}</td>
+                <td className="dark:text-black">{recipe.likeCount}</td>
                 <td>
                   <button
                     onClick={() => navigate(`/dashboard/recipe-details/${recipe._id}`)}

@@ -353,10 +353,10 @@ const MyRecipieCard = ({
             className="w-12 h-12 object-cover rounded-md"
           />
         </td>
-        <td>{title}</td>
-        <td>{cuisine}</td>
-        <td>{prepTime} min</td>
-        <td>{likeCount}</td>
+        <td className="dark:text-black">{title}</td>
+        <td className="dark:text-black">{cuisine}</td>
+        <td className="dark:text-black">{prepTime} min</td>
+        <td className="dark:text-black">{likeCount}</td>
         <td className="flex flex-col gap-1 sm:flex-row sm:gap-2">
           <button
             onClick={() => setIsModalOpen(true)}

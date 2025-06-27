@@ -14,6 +14,7 @@
     "aos": "^2.3.4",
     "firebase": "^11.8.0",
     "framer-motion": "^12.12.1",
+    "icons": "^1.0.0",
     "keen-slider": "^6.8.6",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.523.0",

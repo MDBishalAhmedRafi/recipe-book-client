@@ -5,6 +5,7 @@ import FeaturedChefs from "../Components/FeaturedChefs";
 import { Link, useLoaderData } from "react-router";
 import TopRecipeCard from "../Components/TopRecipeCard";
 import { Typewriter } from 'react-simple-typewriter'; // ✅ Import here
+import HowItWorks from "../Components/HowItWorks";
 
 const Home = () => {
   const recipies = useLoaderData();
@@ -45,6 +46,10 @@ const Home = () => {
 
       <section className="lg:mb-10 md:mb-7 mb-5 bg-gradient-to-r from-red-200 via-orange to-blue-200 rounded-3xl">
         <UserTestimonials />
+      </section>
+
+      <section className="lg:mb-10 md:mb-7 mb-5 bg-gradient-to-r from-red-200 via-orange to-blue-200 rounded-3xl">
+        <HowItWorks></HowItWorks>
       </section>
 
       <section className="lg:mb-10 md:mb-7 mb-5 bg-gradient-to-r from-yellow-200 via-orange to-blue-200 rounded-3xl">

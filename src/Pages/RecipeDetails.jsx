@@ -285,21 +285,21 @@ const RecipeDetails = () => {
                 </div>
               </div>
             </td>
-            <td>{details.title}</td>
-            <td>{details.cuisine}</td>
-            <td className="max-w-xs whitespace-normal">{details.ingredients}</td>
-            <td className="max-w-xs whitespace-normal">{details.instructions}</td>
-            <td>{details.prepTime} mins</td>
+            <td className="dark:text-black">{details.title}</td>
+            <td className="dark:text-black">{details.cuisine}</td>
+            <td className="max-w-xs whitespace-normal dark:text-black">{details.ingredients}</td>
+            <td className="max-w-xs whitespace-normal dark:text-black">{details.instructions}</td>
+            <td className="dark:text-black">{details.prepTime} mins</td>
             <td>
               {details.categories && details.categories.length > 0
                 ? details.categories.map((cate, i) => (
-                    <p key={i} className="mb-1">
+                    <p key={i} className="mb-1 dark:text-black">
                       {cate}
                     </p>
                   ))
                 : "N/A"}
             </td>
-            <td>{likeCount}</td>
+            <td className="dark:text-black">{likeCount}</td>
             <td>
               <button
                 onClick={handleLike}
