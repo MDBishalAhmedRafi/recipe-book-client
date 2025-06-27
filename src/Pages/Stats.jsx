@@ -17,14 +17,6 @@ const Stats = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [firebaseUserCount, setFirebaseUserCount] = useState(0);
-
-useEffect(() => {
-  fetch("https://your-api.com/firebase-users-count")
-    .then(res => res.json())
-    .then(data => setFirebaseUserCount(data.totalFirebaseUsers))
-    .catch(err => console.error(err));
-}, []);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });

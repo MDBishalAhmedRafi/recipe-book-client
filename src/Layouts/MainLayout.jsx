@@ -20,7 +20,7 @@ const MainLayout = () => {
       <header>
                 <Navbar></Navbar>
       </header>
-      <main>
+      <main className="pt-[78px]">
                 {state == "loading" ? <Loading/> : <Outlet></Outlet>} 
       </main>
       <footer>

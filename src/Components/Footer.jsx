@@ -24,7 +24,30 @@ const Footer = () => {
           <p className='font-bold'>Contact Us</p>
           <p className='flex items-center'><FaLocationDot size={20}/><span>154/3 Shantibagh Malibagh Dhaka-1217</span></p>
           <p className='flex items-center'><IoCall size={20}/> <span>+880 1518-371336</span></p>
+          <div className="grid grid-flow-col gap-4">
+          <ul className="menu menu-horizontal px-1">
+        <li>
+                      <NavLink to="/">Home</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/all-recipies">All-Recipies</NavLink>
+                    </li>
+        <li>
+                        <NavLink to="/about-us">About US</NavLink>
+                      </li>
+                       <li>
+                        <NavLink to="/contact-us">Contact US</NavLink>
+                      </li>
+                       <li>
+                        <NavLink to="/support">Support</NavLink>
+                      </li>
+                       <li>
+                        <NavLink to="/dashboard">DashBoard</NavLink>
+                      </li>
+    </ul>
+          </div>
         </aside>
+
         <nav>
           <div className="grid grid-flow-col gap-4">
             <Link

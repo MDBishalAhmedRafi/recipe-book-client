@@ -28,7 +28,7 @@ const Home = () => {
           </span>
         </h1>
 
-        <div className="grid lg:grid-cols-3 gap-6 md:grid-cols-2 grid-cols-1">
+        <div className="grid lg:grid-cols-4 gap-6 md:grid-cols-2 grid-cols-1">
           {recipies.map((recipe) => (
             <TopRecipeCard key={recipe._id} recipe={recipe} />
           ))}

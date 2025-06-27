@@ -16,6 +16,7 @@ import ContactUs from "../Pages/ContactUs";
 import Support from "../Pages/Support";
 import DashBoardLayout from "../Layouts/DashBoardLayout";
 import Stats from "../Pages/Stats";
+import RecipeDetal from "../Components/RecipeDetal";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,18 @@ const router = createBrowserRouter([
             "https://recipe-book-app-server-sepia.vercel.app/more-recipies"
           ),
         element: <AllRecipies></AllRecipies>,
+      },
+      { 
+        path: "/recipe-details/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://recipe-book-app-server-sepia.vercel.app/more-recipies/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <RecipeDetal></RecipeDetal>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
