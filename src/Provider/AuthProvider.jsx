@@ -40,17 +40,31 @@ const AuthProvider = ({children}) => {
                 }
 
                 
-                useEffect(()=> { 
-                                const usSubscribe = onAuthStateChanged(auth, (currentUser) => { 
-                                                setUser(currentUser);
-                                                setLoading(false)
-                                                
-                                })
-                                return () => { 
-                                                usSubscribe();
-                                                
-                                }
-                }, [])
+                useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    setLoading(false);
+
+    // ✅ POST user to backend when logged in
+    if (currentUser?.email) {
+      const userData = {
+        email: currentUser.email,
+        name: currentUser.displayName || 'Anonymous',
+        photo: currentUser.photoURL || 'https://i.pravatar.cc/150?img=11',
+      };
+
+      fetch('https://recipe-book-app-server-sepia.vercel.app/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      }).catch((error) => console.error("Failed to save user:", error));
+    }
+  });
+
+  return () => {
+    unsubscribe();
+  };
+}, []);
                 const authData = { 
                 user,
                 setUser,
