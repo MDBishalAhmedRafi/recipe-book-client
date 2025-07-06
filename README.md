@@ -1,35 +1,65 @@
-# 🍽️ Recipe Book App
+# 🍲 Recipe Book App – Share & Explore Recipes
 
-A beautiful and interactive Recipe Book web app built with **React**, **Tailwind CSS**, and **Firebase Hosting**. Explore a variety of recipes with a smooth, modern UI powered by animations and sliders.
-
-🔗 **Live Demo**: [https://recipe-book-app-38172.web.app/](https://recipe-book-app-38172.web.app/)
+**Recipe Book App** is a full-stack web application that allows users to **create, share, and like recipes**. It’s designed for food lovers who want to document their creations and explore others' ideas. With a clean UI and dynamic interaction, it offers a simple but powerful user experience.
 
 ---
 
-## ✨ Features
+## 🔗 Live Website
 
-- 🌙 **Dark Mode Toggle** — Easily switch between light and dark themes for better user experience.
-- 🔥 **Firebase Integration** — Real-time hosting with fast performance and reliable deployment.
-- 💫 **Animated UI** — Engaging transitions and effects powered by `framer-motion` and `react-awesome-reveal`.
-- 🧭 **Client-Side Routing** — Seamless page navigation using `react-router`.
-- 📱 **Responsive & Touch-Friendly** — Works beautifully on all devices, with swipeable carousels using `swiper` and `keen-slider`.
+🌐 [Visit Recipe Book App](https://recipe-book-app-38172.web.app/)
 
 ---
 
-## 🛠️ Built With
+## 📁 Repository
 
-- [React 19](https://reactjs.org/)
-- [Tailwind CSS 4](https://tailwindcss.com/)
-- [Firebase Hosting](https://firebase.google.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Swiper + Keen Slider](https://swiperjs.com/) for recipe carousels
-- [React Icons](https://react-icons.github.io/react-icons/) for elegant UI icons
+📦 *[View Github source](https://github.com/MDBishalAhmedRafi/recipe-book-client/)*
 
 ---
 
-## 🚀 Getting Started
+## 🧠 Project Concept
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/recipe-book-app.git
-   cd recipe-book-app
+This application enables users to:
+- Add and manage their own recipes with descriptions and images.
+- View recipes added by other users.
+- Like others' recipes to show appreciation.
+- Use protected routes with Firebase Authentication.
+- Enjoy a responsive and interactive UI.
+
+---
+
+## 💡 Key Features
+
+- 📝 Add, edit, and delete recipes as a logged-in user
+- 👍 Like others' recipes with real-time updates
+- 📖 View public recipes with detailed cards
+- 🔐 Firebase Authentication for login/logout
+- 💻 Responsive layout with smooth animation
+- 🧑‍🍳 User-specific dashboard for managing their recipes
+
+---
+
+## 🛠️ Technologies Used
+
+| **Frontend**             | **Backend**              | **Tools & Services**          |
+|--------------------------|--------------------------|-------------------------------|
+| React.js                 | Node.js                  | Firebase Authentication       |
+| React Router DOM         | Express.js               | Firebase Hosting              |
+| Tailwind CSS             | MongoDB                  | Netlify (optional frontend)   |
+| DaisyUI                  | RESTful API              | Git & GitHub                  |
+| AOS                      | JWT (optional)           | Lottie Animation              |
+| TanStack Query (React Query) |                    | Cloudinary (optional image)   |
+
+---
+
+## 📸 Screenshots
+
+> *(You can add homepage, recipe list, add recipe form, dashboard, etc.)*
+
+---
+
+## 🚀 Getting Started Locally
+
+1. **Clone the repository**  
+```bash
+git clone https://github.com/your-username/recipe-book-app.git
+cd recipe-book-app
